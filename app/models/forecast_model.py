@@ -1,5 +1,5 @@
 from datetime import datetime, date
-from typing import Optional
+from typing import Optional, Dict, Any
 from pydantic import BaseModel, Field
 from uuid import UUID
 
@@ -54,10 +54,35 @@ class ForecastQuery(BaseModel):
 
 
 class ForecastResponse(BaseModel):
-    """Response model for forecast data"""
+    """Response model for forecast data with performance metrics"""
     
     data: list[ForecastRecord]
     total_records: int
     page: int
     page_size: int
-    has_next: bool 
+    has_next: bool
+    metadata: Optional[Dict[str, Any]] = Field(None, description="Performance and query metadata")
+
+
+class ForecastSummary(BaseModel):
+    """Response model for forecast summary statistics"""
+    
+    total_records: int
+    unique_sites: int
+    unique_brands: int
+    unique_products: int
+    unique_forecast_runs: int
+    avg_actual_qty: float
+    avg_predicted_qty: float  
+    total_actual_qty: float
+    total_predicted_qty: float
+    min_forecast_week: Optional[date]
+    max_forecast_week: Optional[date]
+
+
+class UniqueValuesResponse(BaseModel):
+    """Response model for unique values queries"""
+    
+    column_name: str
+    unique_values: list[str]
+    count: int 

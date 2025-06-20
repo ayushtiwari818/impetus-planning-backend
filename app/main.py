@@ -82,12 +82,20 @@ async def root():
                 <div class="description">Get summary statistics for forecast data</div>
             </div>
             <div class="endpoint">
+                <a href="/api/v1/forecast/unique-values" target="_blank">GET /api/v1/forecast/unique-values</a>
+                <div class="description">Get unique values for site_id and brand columns</div>
+            </div>
+            <div class="endpoint">
                 <a href="/api/v1/forecast/unique-values/mh_segment" target="_blank">GET /api/v1/forecast/unique-values/{{column_name}}</a>
                 <div class="description">Get unique values for a specific column</div>
             </div>
             <div class="endpoint">
+                <a href="/api/v1/forecast/cache/stats" target="_blank">GET /api/v1/forecast/cache/stats</a>
+                <div class="description">Get cache statistics and performance metrics</div>
+            </div>
+            <div class="endpoint">
                 <a href="/api/v1/forecast/health" target="_blank">GET /api/v1/forecast/health</a>
-                <div class="description">Health check endpoint</div>
+                <div class="description">Health check endpoint with performance metrics</div>
             </div>
             
             <h2>⚙️ Configuration</h2>
